@@ -111,11 +111,11 @@ FROM (
     GROUP BY Country, Year
 ) MedalData
 WHERE Medal_Count = (SELECT MAX(Medal_Count)
-					 FROM (SELECT Country, COUNT(Medal) AS Medal_Count, Year
-						   FROM netflix.summer_olympic_medals_1976_to_2008
-						   GROUP BY Country, Year
-						  ) YearlyData
-					 WHERE YearlyData.Year = MedalData.Year
+		     FROM (SELECT Country, COUNT(Medal) AS Medal_Count, Year
+			   FROM netflix.summer_olympic_medals_1976_to_2008
+			   GROUP BY Country, Year
+			  ) YearlyData
+		     WHERE YearlyData.Year = MedalData.Year
 )
 ORDER BY Year;
 
